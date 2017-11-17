@@ -1,0 +1,78 @@
+#include <stdio.h>  // Для printf
+#include <string.h> // Для strstr
+#include <stdlib.h>
+
+size_t       count_words(char const *s, char c)
+{
+    size_t  i;
+
+    i = 0;
+    while (*s)
+    {
+        if (*s == c)
+            s++;
+        while (*s != c)
+        {
+            if (*(s + 1) == c || *(s + 1) == '\0')
+                i++;
+			if (*(s + 1) == '\0')
+				return (i);
+            s++;
+        }
+		if (*(s + 1) == '\0')
+            return (i);
+    }
+    return (i);
+}
+
+char    **ft_strsplit(char const *s, char c)
+{
+    char            **arrPtr;
+    size_t          len;
+    int             i;
+    unsigned int    j;
+
+    len = 0;
+    i = 0;
+    j =0;
+    arrPtr = NULL;
+    if (!s)
+        return (NULL);
+    arrPtr = (char **)ft_memalloc(count_words(s, c) + 1);
+    if (!arrPtr)
+        return (NULL);
+    while (*s)
+    {
+        if (*s == c)
+		{
+            s++;
+            j++;
+        }
+        len = 0;
+        while (*s != c)
+        {
+            if (*(s + 1) == c || *(s + 1) == '\0')
+            {
+				printf("len = %zu", len);
+                arrPtr[i] = ft_strsub(s, j, len);
+                i++;
+                j = j + len;
+            }
+            len++;
+            s++;
+        }
+    }
+    arrPtr[i] = NULL;
+    return (arrPtr);
+}
+
+int main (void)
+{ 
+	char **text;
+	char str [] = "      split       this for   me  !       ";
+	printf("test = %zu\n", count_words(str, ' '));
+	text = ft_strsplit(str, ' ');
+	printf("%s", text[0]);
+		
+	return 0;
+}
