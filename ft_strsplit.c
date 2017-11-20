@@ -6,7 +6,7 @@
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 10:10:56 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/17 19:13:49 by msarapii         ###   ########.fr       */
+/*   Updated: 2017/11/20 09:53:53 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ char			**ft_strsplit(char const *s, char c)
 	int			i;
 	size_t		j;
 
+	if (!s)
+		return (NULL);
 	j = count_words(s, c);
 	i = 0;
 	arr_ptr = NULL;
-	if (!s)
-		return (NULL);
 	if (!(arr_ptr = (char **)ft_memalloc(sizeof(s) * j + 1)))
 		return (NULL);
 	while (j--)

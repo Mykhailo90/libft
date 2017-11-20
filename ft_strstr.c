@@ -6,7 +6,7 @@
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 10:26:25 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/13 19:22:35 by msarapii         ###   ########.fr       */
+/*   Updated: 2017/11/20 09:46:47 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ unsigned char		*ft_strstr(const unsigned char *haystack,
 		}
 		i++;
 	}
-		return (0);
+	return (0);
 }
