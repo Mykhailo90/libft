@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/31 16:05:19 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/21 01:01:07 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/20 17:00:54 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/20 19:01:51 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+t_list			*ft_lstnew(void const *content, size_t content_size)
 {
-	char	*d1;
+	t_list	*list;
 
-	d1 = (char *)dest;
-	if ((src - dest) < 0)
+	list = NULL;
+	if (!(list = ft_memalloc(sizeof(t_list))))
+		return (NULL);
+	if (content && content_size)
 	{
-		d1 = (char *)dest + n - 1;
-		src = (char *)src + n - 1;
-		while (n--)
-			*(d1--) = *(char *)(src--);
-		return (dest);
+		list->content = ft_memalloc(content_size);
+		ft_memcpy(list->content, content, content_size);
+		list->content_size = content_size;
+		list->next = NULL;
 	}
-	else if ((src - dest) > 0)
+	else
 	{
-		while (n--)
-			*(d1++) = *(char *)(src++);
-		return (0);
+		list->content = NULL;
+		list->content_size = 0;
+		list->next = NULL;
 	}
-	return (dest);
+	return (list);
 }

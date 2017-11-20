@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/31 16:05:19 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/21 01:01:07 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/20 23:25:57 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 00:55:52 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	*d1;
+	t_list	*start;
 
-	d1 = (char *)dest;
-	if ((src - dest) < 0)
+	start = NULL;
+	if (lst && f)
 	{
-		d1 = (char *)dest + n - 1;
-		src = (char *)src + n - 1;
-		while (n--)
-			*(d1--) = *(char *)(src--);
-		return (dest);
+		start = ft_lstnew(NULL, 0);
+		start = f(lst);
+		while (lst)
+		{
+			lst = lst->next;
+			ft_lstadd(&start, f(lst));
+		}
 	}
-	else if ((src - dest) > 0)
-	{
-		while (n--)
-			*(d1++) = *(char *)(src++);
-		return (0);
-	}
-	return (dest);
+	return (start);
 }
