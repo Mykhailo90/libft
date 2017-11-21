@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 12:14:35 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/05 12:31:32 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/21 18:50:01 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 18:54:46 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+size_t		ft_count_words(char const *s, char c)
 {
-	char	*res;
+	size_t	i;
 
-	if (!dest && !src)
-		return (NULL);
-	res = dest;
-	while (*(src))
-		*(dest++) = *(src++);
-	*dest = '\0';
-	return (res);
+	i = 0;
+	while (*s)
+	{
+		if (*s == c)
+			s++;
+		while (*s != c)
+		{
+			if (*(s + 1) == c || *(s + 1) == '\0')
+				i++;
+			if (*(s + 1) == '\0')
+				return (i);
+			s++;
+		}
+		if (*(s + 1) == '\0')
+			return (i);
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/31 09:57:08 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/21 00:27:22 by msarapii         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:53:37 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+size_t				ft_count_words(char const *s, char c);
+int					ft_is_it_space(char ch);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_isalnum(int c);

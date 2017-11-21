@@ -12,15 +12,6 @@
 
 #include "libft.h"
 
-static int		is_it_space(char ch)
-{
-	if ((ch == '\t' || ch == '\v' || ch == '\f') ||
-		(ch == '\r' || ch == ' ' || ch == '\n'))
-		return (1);
-	else
-		return (0);
-}
-
 int				ft_atoi(const char *nptr)
 {
 	int			is_negative;
@@ -34,7 +25,7 @@ int				ft_atoi(const char *nptr)
 	max = 9223372036854775807L;
 	res = 0;
 	form = (res * 10 + (*nptr - '0'));
-	while (is_it_space(*nptr))
+	while (ft_is_it_space(*nptr))
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
 		is_negative = (*(nptr++) == '-') ? 1 : 0;

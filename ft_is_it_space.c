@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_is_it_space.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 12:14:35 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/05 12:31:32 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/21 18:41:40 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 18:46:33 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strcpy(char *dest, const char *src)
+int	ft_is_it_space(char ch)
 {
-	char	*res;
-
-	if (!dest && !src)
-		return (NULL);
-	res = dest;
-	while (*(src))
-		*(dest++) = *(src++);
-	*dest = '\0';
-	return (res);
+	if ((ch == '\t' || ch == '\v' || ch == '\f') ||
+		(ch == '\r' || ch == ' ' || ch == '\n'))
+		return (1);
+	else
+		return (0);
 }

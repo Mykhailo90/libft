@@ -14,10 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
 	char	*res;
 
-	i = 0;
 	res = NULL;
 	if (!c)
 	{

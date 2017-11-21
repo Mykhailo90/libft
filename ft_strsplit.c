@@ -12,29 +12,6 @@
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
-{
-	size_t		i;
-
-	i = 0;
-	while (*s)
-	{
-		if (*s == c)
-			s++;
-		while (*s != c)
-		{
-			if (*(s + 1) == c || *(s + 1) == '\0')
-				i++;
-			if (*(s + 1) == '\0')
-				return (i);
-			s++;
-		}
-		if (*(s + 1) == '\0')
-			return (i);
-	}
-	return (i);
-}
-
 static size_t	count_symbols(char const *s, char c)
 {
 	size_t		i;
@@ -54,12 +31,12 @@ char			**ft_strsplit(char const *s, char c)
 {
 	char		**arr_ptr;
 	size_t		len;
-	int			i;
+	size_t		i;
 	size_t		j;
 
 	if (!s)
 		return (NULL);
-	j = count_words(s, c);
+	j = ft_count_words(s, c);
 	i = 0;
 	arr_ptr = NULL;
 	if (!(arr_ptr = (char **)ft_memalloc(sizeof(s) * j + 1)))
