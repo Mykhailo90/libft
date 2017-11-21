@@ -6,7 +6,7 @@
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 14:22:04 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/15 14:28:39 by msarapii         ###   ########.fr       */
+/*   Updated: 2017/11/21 11:32:43 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_strdel(char **as)
 {
-	ft_memdel((void **)as);
+	if (as)
+		ft_memdel((void **)as);
 }

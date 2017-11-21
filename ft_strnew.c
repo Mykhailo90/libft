@@ -6,7 +6,7 @@
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:17:05 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/21 00:08:53 by msarapii         ###   ########.fr       */
+/*   Updated: 2017/11/21 13:02:44 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ char	*ft_strnew(size_t size)
 {
 	char	*p;
 
-	p = NULL;
-	if (size)
-		p = ft_memalloc(size + 1);
-	if (p)
-		p[size] = '\0';
+	if (!(p = ft_memalloc(size + 1)))
+		return (NULL);
+	p[size] = '\0';
 	return (p);
 }

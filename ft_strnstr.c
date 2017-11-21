@@ -6,7 +6,7 @@
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 13:28:09 by msarapii          #+#    #+#             */
-/*   Updated: 2017/11/21 00:24:56 by msarapii         ###   ########.fr       */
+/*   Updated: 2017/11/21 13:36:31 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (*little == '\0')
 		return ((char *)big);
-	while (len && *big)
+	i = ft_strlen(little);
+	while (*big && len-- >= i)
 	{
-		if (*big == little[i])
-			i++;
-		else
-			i = 0;
-		if (little[i] == '\0')
-			return ((char *)(big - i + 1));
+		if (*big == *little && ft_memcmp(big, little, i) == 0)
+			return ((char *)big);
 		big++;
-		len--;
 	}
 	return (NULL);
 }
